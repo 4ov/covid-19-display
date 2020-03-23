@@ -1,7 +1,7 @@
 async function main(){
    var data = await fetch('https://coronavirus-19-api.herokuapp.com/countries').then(d=>d.json())
    data = data.filter(c => c.country == 'Egypt')[0]
-   console.log(data);
+    //YOU CAN CHANGE THE COUNTRY HERE ^
    document.querySelector('#cases').innerHTML = data.cases
    document.querySelector('#today').innerHTML = data.todayCases
    document.querySelector('#deaths').innerHTML = data.deaths
