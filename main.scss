@@ -1,0 +1,128 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+$shadow:
+  0 6.7px 5.3px rgba(0, 0, 0, 0.028),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.042),
+  0 100px 80px rgba(0, 0, 0, 0.07)
+;
+
+
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 7vh;
+    border-bottom: 1px solid #00000030;
+
+    .title{
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        transform: translateY(-50%);
+    }
+
+    .loading{
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        transform: translateY(-50%);
+
+        circle{
+            stroke-dasharray: 40;
+            animation: spin 3s ease infinite;
+            transform-origin: 50% 50%;
+        }
+    }
+}
+
+main{
+    margin-top: 7vh;
+    width: 100vw;
+    height: calc(100vh - 7vh);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    justify-items: center;
+
+
+    div{
+        text-align: center;
+        width: 65%;
+        height: 50%;
+        align-self: center;
+        position: relative;
+        
+        span{
+            font-size: 140%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -100%);
+        }
+    }
+
+    div::before{
+        content: attr(name);
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 140%;
+
+        
+    }
+}
+
+.info{
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    color: #29292990;
+}
+
+
+.message{
+    background: #36e;
+    position: absolute;
+    max-height: 30vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: .4s;
+    bottom: 5%;
+    right: 15%;
+    transform: translateY(5%);
+    text-align: left;
+    border-radius: 7px;
+    padding: 12px;
+    color: white;
+    &.on{
+        opacity: 1;
+        visibility: visible;
+    }
+    #messageClose{
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translate(-50%, 50%);
+    }
+    
+    a{
+        color: #f06292;
+        text-decoration: none;
+    }
+}
+
+
+@keyframes spin{
+    0%{transform: rotateZ(360deg);stroke-dasharray: 40;}
+    50%{transform: rotateZ(-360deg);stroke-dasharray: 10;}
+    100%{transform: rotateZ(-360deg);stroke-dasharray: 40;}
+
+}
